@@ -39,6 +39,9 @@ const s3Client = new S3Client({ region: process.env.AWS_REGION });
 //   }
 // });
 
+//@desc Upload file to s3
+//@route POST /api/files/upload
+//@access private
 const uploadFile = asyncHandler(async (req, res) => {
     const file = req.file;
     console.log("file--------",file);
@@ -52,7 +55,7 @@ const uploadFile = asyncHandler(async (req, res) => {
       Key: file.originalname,
       Body: file.buffer
     };
-    console.log("params--------",params);
+
     try {
       const command = new PutObjectCommand(params);
       // const data = await s3Client.send(command);
