@@ -65,7 +65,8 @@ const uploadFile = asyncHandler(async (req, res) => {
       
       const fileData = await File.create({
           filename: file.originalname,
-          url: `https://s3.tradepay.co.kr/tradepay-finance/myfiles/${file.originalname}`
+          url: `https://s3.tradepay.co.kr/tradepay-finance/myfiles/${file.originalname}`,
+          user_id: req.user.id
         });
         console.log("fileData--------",fileData);
 
