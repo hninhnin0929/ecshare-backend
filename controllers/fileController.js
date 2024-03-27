@@ -68,6 +68,7 @@ const uploadFile = asyncHandler(async (req, res) => {
       
       const fileData = await File.create({
           filename: file.originalname,
+          size: file.size,
           url: `https://s3.tradepay.co.kr/tradepay-finance/myfiles/${file.originalname}`,
           user_id: req.user.id
         });
@@ -83,6 +84,7 @@ const uploadFile = asyncHandler(async (req, res) => {
 
   const getFileList = asyncHandler(async (req, res) => {
     const fileList = await File.find({ user_id: req.user.id }); 
+    console.log("fileList backend", fileList);
     res.status(200).json(fileList);
   });
 
