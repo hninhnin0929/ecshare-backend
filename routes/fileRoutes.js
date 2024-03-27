@@ -9,5 +9,6 @@ const upload = multer();
 
 router.use(validateToken);
 router.post('/upload', upload.single('file'), fileController.uploadFile);
+router.get('/', fileController.getFileList);
 
 module.exports = router;

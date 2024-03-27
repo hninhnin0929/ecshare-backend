@@ -81,6 +81,12 @@ const uploadFile = asyncHandler(async (req, res) => {
     }
   });
 
+  const getFileList = asyncHandler(async (req, res) => {
+    const fileList = await File.find({ user_id: req.user.id }); 
+    res.status(200).json(fileList);
+  });
+
 module.exports = {
-    uploadFile
+    uploadFile,
+    getFileList
   };
