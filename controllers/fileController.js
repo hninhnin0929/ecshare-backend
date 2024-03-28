@@ -65,11 +65,10 @@ const uploadFile = asyncHandler(async (req, res) => {
       //   filename: file.originalname,
       //   url: `https://${process.env.S3_BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/${file.originalname}`
       // };
-      
       const fileData = await File.create({
-          filename: file.originalname,
+          filename: decodeURIComponent(file.originalname),
           size: file.size,
-          url: `https://s3.tradepay.co.kr/tradepay-finance/myfiles/${file.originalname}`,
+          url: `https://s3.tradepay.co.kr/tradepay-finance/logos/${file.originalname}`,
           user_id: req.user.id
         });
         console.log("fileData--------",fileData);
