@@ -10,5 +10,6 @@ const upload = multer();
 router.use(validateToken);
 router.post('/upload', upload.single('file'), fileController.uploadFile);
 router.get('/', fileController.getFileList);
+router.delete('/:fileId', fileController.deleteFile);
 
 module.exports = router;
